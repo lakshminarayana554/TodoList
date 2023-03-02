@@ -13,23 +13,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // DB CONNECTION
-main().catch(err => console.log(err));
-
-async function main() {
-  await mongoose.connect('mongodb+srv://<username>:<password>@cluster0.w8vku2i.mongodb.net/todolistDB?retryWrites=true'|| 'mongodb://localhost:27017/todolist',{useNewUrlParser:true,
+mongoose.connect('mongodb+srv://<username>:<password>@cluster0.w8vku2i.mongodb.net/todolistDB?retryWrites=true'|| 'mongodb://localhost:27017/todolist',{useNewUrlParser:true,
   useUnifiedTopology:true});
-  
-  mongoose.connection.on("error", err => {
-  
-    console.log("err", err)
-  
-  })
-  mongoose.connection.on("connected", (err, res) => {
-  
-    console.log("Succesfully connected")
-  
-  })
-};
   
 const itemsSchema = ({
   name:String
