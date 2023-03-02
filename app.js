@@ -16,7 +16,7 @@ app.use(express.static("public"));
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://<username>:<password>@cluster0.w8vku2i.mongodb.net/todolistDB?retryWrites=true',{useNewUrlParser:true,
+  await mongoose.connect('mongodb+srv://<username>:<password>@cluster0.w8vku2i.mongodb.net/todolistDB?retryWrites=true'|| 'mongodb://localhost:27017/todolist',{useNewUrlParser:true,
   useUnifiedTopology:true});
   
   mongoose.connection.on("error", err => {
