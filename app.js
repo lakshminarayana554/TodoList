@@ -16,7 +16,7 @@ app.use(express.static("public"));
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://admin-LN:p8oFa36E3qIpHGJw@cluster0.w8vku2i.mongodb.net/todolistDB?retryWrites=true',{useNewUrlParser:true,
+  await mongoose.connect('mongodb+srv://<username>:<password>@cluster0.w8vku2i.mongodb.net/todolistDB?retryWrites=true',{useNewUrlParser:true,
   useUnifiedTopology:true});
   
   mongoose.connection.on("error", err => {
@@ -168,6 +168,12 @@ app.get("/about", function(req, res){
   res.render("about");
 });
 
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+
+let port = process.env.PORT;
+if(port == null ||  port == ""){
+  port = 3000;
+}
+
+app.listen(port, function() {
+  console.log("Server started Successfully");
 });
